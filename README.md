@@ -20,7 +20,9 @@ Usage
 
 3. Add `'Shift31\LaravelElasticsearch\LaravelElasticsearchServiceProvider'` to your `'providers'` array in app/config/app.php
 
-4. Use the `Es` facade to access any method from the `Elasticsearch\Client` class, for example:
+4. add `'Es' => 'Shift31\LaravelElasticsearch\Facades\Es'` to your `'aliases'` array in app/config/app.php
+
+5. Use the `Es` facade to access any method from the `Elasticsearch\Client` class, for example:
 
         $searchParams['index'] = 'your_index';
         $searchParams['size'] = 50;
