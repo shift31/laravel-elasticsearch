@@ -17,6 +17,7 @@ Usage
             'logPath' => 'path/to/your/elasticsearch/log'
             'logLevel' => Logger::INFO;
         );
+The keys of this array should be named according the parameters supported by Elasticsearch\Client.
 
 3. Add `'Shift31\LaravelElasticsearch\LaravelElasticsearchServiceProvider'` to your `'providers'` array in app/config/app.php
 

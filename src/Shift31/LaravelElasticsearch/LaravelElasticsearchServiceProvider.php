@@ -35,17 +35,16 @@ class LaravelElasticsearchServiceProvider extends ServiceProvider {
 	{
 		$this->app->singleton('elasticsearch', function()
 			{
-				// retrieve settings from app/config/elasticsearch.php
-				extract(Config::get('elasticsearch'));
 
 				$connParams = array();
-				$connParams['hosts'] = isset($hosts) ? $hosts : array(
-					'localhost:9200'
-				);
-				$connParams['logPath'] = isset($logPath) ? $logPath : storage_path() . '/logs/hostbase-elasticsearch-' . php_sapi_name() . '.log';
-				$connParams['logLevel'] = isset($logLevel) ? $logLevel : Logger::INFO;
+				$connParams['hosts'] = array('localhost:9200');
+				$connParams['logPath'] = storage_path() . '/logs/hostbase-elasticsearch-' . php_sapi_name() . '.log';
+				$connParams['logLevel'] = Logger::INFO;
 
-				return new Client($connParams);
+				// merge settings from app/config/elasticsearch.php
+				$params = array_merge($connParams, Config::get('elasticsearch'));
+
+				return new Client($params);
 			});
 
 		// Shortcut so developers don't need to add an Alias in app/config/app.php
