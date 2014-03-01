@@ -1,12 +1,25 @@
 Elasticsearch for Laravel 4
 ===========================
-This is a Laravel 4 Service Provider for the offical Elasticsearch API client:
+This is a Laravel 4 Service Provider for the official Elasticsearch low-level client:
 http://www.elasticsearch.org/guide/en/elasticsearch/client/php-api/current/index.html
+
+
+Version Matrix
+--------------
+Since there are breaking changes in Elasticsearch 1.0, your version of Elasticsearch must match the version of this library, which matches the version of the Elasticsearch low-level client.
+If you are using a version older than 1.0, you must install the `0.4` laravel-elasticsearch branch.  Otherwise, use the `1.0` branch.
+
+The master branch will always track the latest version.
+
+| Elasticsearch Version | laravel-elasticsearch branch |
+| --------------------- | ---------------------------- |
+| >= 1.0                | 1.0                          |
+| <= 0.90.*             | 0.4                          |
 
 
 Usage
 -----
-1. Require `"shift31/laravel-elasticsearch": "dev-master"` in your composer.json
+1. Require `"shift31/laravel-elasticsearch": "1.0.*@dev"` in your composer.json
 
 2. Create app/config/elasticsearch.php, modifying the following contents accordingly:
 
