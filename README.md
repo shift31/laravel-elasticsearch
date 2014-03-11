@@ -52,6 +52,6 @@ If you return an empty array in the config file:
 
 `'hosts'` defaults to localhost:9200
 
-`'logPath'` defaults to `storage_path() . '/logs/hostbase-elasticsearch-' . php_sapi_name() . '.log'`
+`'logPath'` defaults to `storage_path() . '/logs/elasticsearch-' . php_sapi_name() . '.log'`
 
 `'logLevel'` defaults to `Logger::INFO`

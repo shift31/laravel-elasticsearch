@@ -38,7 +38,7 @@ class LaravelElasticsearchServiceProvider extends ServiceProvider {
 
 				$connParams = array();
 				$connParams['hosts'] = array('localhost:9200');
-				$connParams['logPath'] = storage_path() . '/logs/hostbase-elasticsearch-' . php_sapi_name() . '.log';
+				$connParams['logPath'] = storage_path() . '/logs/elasticsearch-' . php_sapi_name() . '.log';
 				$connParams['logLevel'] = Logger::INFO;
 
 				// merge settings from app/config/elasticsearch.php
