@@ -25,6 +25,8 @@ Usage
 ```php
 <?php
 
+use Monolog\Logger;
+
 return array(
     'hosts' => array(
                     'your.elasticsearch.server:9200'
