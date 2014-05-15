@@ -16,6 +16,7 @@ The master branch will always track the latest version.
 | >= 1.0                | 1.0                          |
 | <= 0.90.*             | 0.4                          |
 
+**Support for v1.1.x of the Elasticsearch client has been added in v1.1 of laravel-elasticsearch.**  We'll try to be consistent with this convention going forward.
 
 Usage
 -----
