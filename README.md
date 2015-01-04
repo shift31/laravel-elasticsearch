@@ -49,6 +49,8 @@ $searchParams['body']['query']['query_string']['query'] = 'foofield:barstring';
 $result = Es::search($searchParams);
 ```
 
+5. update your composer with `php composer.phar update`
+
 Default Configuration
 ---------------------
 If you return an empty array in the config file:
