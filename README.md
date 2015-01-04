@@ -1,6 +1,6 @@
-Elasticsearch for Laravel 4
-===========================
-This is a Laravel 4 Service Provider for the official Elasticsearch low-level client:
+Elasticsearch for Laravel
+=========================
+This is a Laravel (4+) Service Provider for the official Elasticsearch low-level client:
 http://www.elasticsearch.org/guide/en/elasticsearch/client/php-api/current/index.html
 
 
@@ -20,7 +20,7 @@ The master branch will always track the latest version.
 
 Usage
 -----
-1. Require `"shift31/laravel-elasticsearch": "1.0.*@dev"` in your composer.json
+1. Run `composer require shift31/laravel-elasticsearch`
 
 2. Create app/config/elasticsearch.php, modifying the following contents accordingly:
 ```php
