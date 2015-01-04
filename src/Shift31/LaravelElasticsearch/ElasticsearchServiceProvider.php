@@ -3,36 +3,18 @@
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
 use Monolog\Logger;
-use Config;
 use Elasticsearch\Client;
 
 
 /**
- * Class LaravelElasticsearchServiceProvider
+ * Class ElasticsearchServiceProvider
  *
- * Legacy ServiceProvider compatible with Laravel 4
+ * New ServiceProvider compatible with Laravel 5
  *
  * @package Shift31\LaravelElasticsearch
  */
-class LaravelElasticsearchServiceProvider extends ServiceProvider {
-
-	/**
-	 * Indicates if loading of the provider is deferred.
-	 *
-	 * @var bool
-	 */
-	protected $defer = false;
-
-	/**
-	 * Bootstrap the application events.
-	 *
-	 * @return void
-	 */
-	public function boot()
-	{
-		$this->package('shift31/laravel-elasticsearch');
-	}
-
+class ElasticsearchServiceProvider extends ServiceProvider
+{
 	/**
 	 * Register the service provider.
 	 *
@@ -49,7 +31,7 @@ class LaravelElasticsearchServiceProvider extends ServiceProvider {
 				$connParams['logLevel'] = Logger::INFO;
 
 				// merge settings from app/config/elasticsearch.php
-				$params = array_merge($connParams, Config::get('elasticsearch'));
+				$params = array_merge($connParams, $this->app['config']['elasticsearch']);
 
 				return new Client($params);
 			});
@@ -69,7 +51,7 @@ class LaravelElasticsearchServiceProvider extends ServiceProvider {
 	 */
 	public function provides()
 	{
-		return array('elasticsearch');
+		return ['elasticsearch', 'Elasticsearch\Client'];
 	}
 
 }

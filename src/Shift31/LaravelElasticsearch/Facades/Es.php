@@ -1,8 +1,4 @@
-<?php
-
-
-namespace Shift31\LaravelElasticsearch\Facades;
-
+<?php namespace Shift31\LaravelElasticsearch\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
