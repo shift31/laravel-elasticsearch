@@ -1,6 +1,6 @@
 {
     "name": "shift31/laravel-elasticsearch",
-    "description": "A Laravel 4 Service Provider for the Elasticsearch API client",
+    "description": "A Laravel Service Provider for the Elasticsearch API client",
     "authors": [
         {
             "name": "Shift 31 Consulting",
@@ -9,7 +9,7 @@
     ],
     "require": {
         "php": ">=5.3.0",
-        "illuminate/support": "~4",
+        "illuminate/support": "~4|~5",
         "elasticsearch/elasticsearch": "~1.1"
     },
     "autoload": {
