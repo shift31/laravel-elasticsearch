@@ -36,9 +36,10 @@ return array(
     'logLevel' => Logger::INFO
 );
 ```
+
 The keys of this array should be named according the parameters supported by Elasticsearch\Client.
 
-3. Add `'Shift31\LaravelElasticsearch\LaravelElasticsearchServiceProvider'` to your `'providers'` array in app/config/app.php
+3. In the `'providers'` array in app/config/app.php, if you are using Laravel 4, add `'Shift31\LaravelElasticsearch\LaravelElasticsearchServiceProvider'`.  **If you are using Laravel 5**, add `'Shift31\LaravelElasticsearch\ElasticsearchServiceProvider'`. The ServiceProvider will enable the 'Es' facade for you.
 
 4. Use the `Es` facade to access any method from the `Elasticsearch\Client` class, for example:
 ```php

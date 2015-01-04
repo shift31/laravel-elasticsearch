@@ -9,7 +9,7 @@ use Elasticsearch\Client;
 /**
  * Class ElasticsearchServiceProvider
  *
- * New ServiceProvider compatible with Laravel 5
+ * ServiceProvider compatible with Laravel 5
  *
  * @package Shift31\LaravelElasticsearch
  */

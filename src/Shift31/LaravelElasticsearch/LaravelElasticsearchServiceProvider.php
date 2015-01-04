@@ -10,7 +10,7 @@ use Elasticsearch\Client;
 /**
  * Class LaravelElasticsearchServiceProvider
  *
- * Legacy ServiceProvider compatible with Laravel 4
+ * ServiceProvider compatible with Laravel 4
  *
  * @package Shift31\LaravelElasticsearch
  */
