@@ -52,7 +52,7 @@ $searchParams['body']['query']['query_string']['query'] = 'foofield:barstring';
 $result = Es::search($searchParams);
 ```
 
-**A friendly reminder:**  If you use the facade in a namespace other than global (i.e. in a Laravel 5.x controller), you must add `use Es;` at the top of your file (after `<?php` of course), or add a backslash in front of any static calls (ex: `\Es::search`).
+**A friendly reminder:**  If you use the facade in a namespace other than global (i.e. in a Laravel 5.x controller), you must add `use Es;` at the top of your file (after `<?php` of course), or add a backslash in front of any static calls (ex: `\Es::search(...)`).
 
 Default Configuration
 ---------------------
