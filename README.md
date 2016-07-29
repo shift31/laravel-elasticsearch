@@ -13,6 +13,7 @@ The master branch will always track the latest version.
 
 | Elasticsearch Version | laravel-elasticsearch branch |
 | --------------------- | ---------------------------- |
+| >= 2.0                | master                       |
 | >= 1.0                | 1.0                          |
 | <= 0.90.*             | 0.4                          |
 
