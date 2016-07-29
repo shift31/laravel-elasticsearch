@@ -13,6 +13,7 @@ The master branch will always track the latest version.
 
 | Elasticsearch Version | laravel-elasticsearch branch |
 | --------------------- | ---------------------------- |
+| >= 2.0                | master                       |
 | >= 1.0                | 1.0                          |
 | <= 0.90.*             | 0.4                          |
 
@@ -20,7 +21,7 @@ The master branch will always track the latest version.
 
 Usage
 -----
-1. Run `composer require shift31/laravel-elasticsearch:~1.0`
+1. Run `composer require shift31/laravel-elasticsearch:~2.0`
 
 2. Create app/config/elasticsearch.php, modifying the following contents accordingly:
 ```php
