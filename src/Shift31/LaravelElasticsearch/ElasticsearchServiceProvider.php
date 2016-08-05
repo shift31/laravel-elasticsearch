@@ -39,7 +39,14 @@ class ElasticsearchServiceProvider extends ServiceProvider
 
         });
 
+        $this->app->alias('Elasticsearch\Client', 'elasticsearch');
 
+        // Shortcut so developers don't need to add an Alias in app/config/app.php
+        $this->app->booting(function () {
+            $loader = AliasLoader::getInstance();
+            $loader->alias('Es', 'Shift31\LaravelElasticsearch\Facades\Es');
+        });
+    }
 
     /**
      * Get the services provided by the provider.
