@@ -1,6 +1,7 @@
 <?php namespace Shift31\LaravelElasticsearch;
 
 use Elasticsearch\Client;
+use Elasticsearch\ClientBuilder;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Monolog\Logger;
@@ -15,7 +16,7 @@ use Monolog\Logger;
  */
 class ElasticsearchServiceProvider extends ServiceProvider
 {
-    /**
+     /**
      * Register the service provider.
      *
      * @return void
@@ -26,17 +27,19 @@ class ElasticsearchServiceProvider extends ServiceProvider
 
             $connParams = array();
             $connParams['hosts'] = ['localhost:9200'];
-            $connParams['logPath'] = storage_path() . '/logs/elasticsearch.log';
-            $connParams['logLevel'] = Logger::INFO;
 
             // merge settings from app/config/elasticsearch.php
             $params = array_merge($connParams, $this->app['config']->get('elasticsearch', array()));
 
-            return new Client($params);
+            $clientBuilder = new \Elasticsearch\ClientBuilder();
+            $clientBuilder->setHosts($params['hosts']);
+
+            // this is the new way of making the client!
+            return $clientBuilder->create()->build();
+
         });
 
         $this->app->alias('Elasticsearch\Client', 'elasticsearch');
-
 
         // Shortcut so developers don't need to add an Alias in app/config/app.php
         $this->app->booting(function () {
@@ -44,7 +47,6 @@ class ElasticsearchServiceProvider extends ServiceProvider
             $loader->alias('Es', 'Shift31\LaravelElasticsearch\Facades\Es');
         });
     }
-
 
     /**
      * Get the services provided by the provider.
