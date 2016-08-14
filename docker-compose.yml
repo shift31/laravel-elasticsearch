@@ -1,0 +1,5 @@
+elasticsearch:
+  image: elasticsearch
+  ports:
+    - "9300"
+    - "9200"
