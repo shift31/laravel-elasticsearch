@@ -22,12 +22,12 @@ class ElasticsearchServiceProvider extends ServiceProvider
     {
         $this->app->singleton('Elasticsearch\Client', function () {
 
-            $connParams = array();
+            $connParams = [];
             $connParams['hosts'] = ['localhost:9200'];
             $connParams['logPath'] = storage_path() . '/logs/elasticsearch-' . php_sapi_name() . '.log';
 
             // merge settings from app/config/elasticsearch.php
-            $params = array_merge($connParams, $this->app['config']->get('elasticsearch', array()));
+            $params = array_merge($connParams, $this->app['config']->get('elasticsearch', []));
 
             $logger = ClientBuilder::defaultLogger($params['logPath']);
 

@@ -40,7 +40,7 @@ class LaravelElasticsearchServiceProvider extends ServiceProvider {
         $this->app->singleton('elasticsearch', function()
         {
 
-            $connParams = array();
+            $connParams = [];
             $connParams['hosts'] = array('localhost:9200');
             $connParams['logPath'] = storage_path() . '/logs/elasticsearch-' . php_sapi_name() . '.log';
 

@@ -27,14 +27,11 @@ Usage
 ```php
 <?php
 
-use Monolog\Logger;
-
 return array(
     'hosts' => array(
                     'your.elasticsearch.server:9200'
                     ),
     'logPath' => 'path/to/your/elasticsearch/log',
-    'logLevel' => Logger::INFO
 );
 ```
 
@@ -62,5 +59,3 @@ If you return an empty array in the config file:
 `'hosts'` defaults to localhost:9200
 
 `'logPath'` defaults to `storage_path() . '/logs/elasticsearch.log'`
-
-`'logLevel'` defaults to `Logger::INFO`
