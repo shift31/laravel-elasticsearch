@@ -11,7 +11,8 @@ use Elasticsearch\ClientBuilder;
  *
  * @package Shift31\LaravelElasticsearch
  */
-class LaravelElasticsearchServiceProvider extends ServiceProvider {
+class LaravelElasticsearchServiceProvider extends ServiceProvider
+{
 
     /**
      * Indicates if loading of the provider is deferred.
@@ -27,7 +28,7 @@ class LaravelElasticsearchServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        $this->package('shift31/laravel-elasticsearch');
+        $this->package('shift31/laravel-elasticsearch', null, __DIR__ . '/../..');
     }
 
     /**
@@ -37,27 +38,27 @@ class LaravelElasticsearchServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        $this->app->singleton('elasticsearch', function()
-        {
+        // set elasticsearch config
+        $this->setConfig();
+        $this->app->singleton('elasticsearch', function () {
+            $config = $this->app->config->get('elasticsearch');
+            $logger = ClientBuilder::defaultLogger($config['logPath']);
 
-            $connParams = [];
-            $connParams['hosts'] = array('localhost:9200');
-            $connParams['logPath'] = storage_path() . '/logs/elasticsearch-' . php_sapi_name() . '.log';
-
-            // merge settings from app/config/elasticsearch.php
-            $params = array_merge($connParams, $this->app['config']->get('elasticsearch'));
-
-            $logger = ClientBuilder::defaultLogger($params['logPath']);
-
-            return ClientBuilder::create()->setHosts($params['hosts'])->setLogger($logger)->build();
+            return ClientBuilder::create()->setHosts($config['hosts'])->setLogger($logger)->build();
         });
 
         // Shortcut so developers don't need to add an Alias in app/config/app.php
-        $this->app->booting(function()
-        {
+        $this->app->booting(function () {
             $loader = AliasLoader::getInstance();
             $loader->alias('Es', 'Shift31\LaravelElasticsearch\Facades\Es');
         });
+    }
+
+    private function setConfig()
+    {
+        $packageConfigPath = __DIR__ . '/../../config/elasticsearch.php';
+        $config = $this->app['config']->get('elasticsearch', []);
+        $this->app['config']->set('elasticsearch', array_merge(require $packageConfigPath, $config));
     }
 
     /**

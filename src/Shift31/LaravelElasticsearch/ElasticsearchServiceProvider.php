@@ -13,25 +13,26 @@ use Illuminate\Support\ServiceProvider;
  */
 class ElasticsearchServiceProvider extends ServiceProvider
 {
-     /**
+    /**
      * Register the service provider.
      *
      * @return void
      */
     public function register()
     {
+        // publish config file
+        $this->publishes([
+            __DIR__ . '/../../config/elasticsearch.php' => config_path('elasticsearch.php')
+        ], 'config');
+
+        // merge default config variables
+        $this->mergeConfigFrom(__DIR__ . '/../../config/elasticsearch.php', 'elasticsearch');
+
         $this->app->singleton('Elasticsearch\Client', function () {
+            $config = $this->app->config->get('elasticsearch');
+            $logger = ClientBuilder::defaultLogger($config['logPath']);
 
-            $connParams = [];
-            $connParams['hosts'] = ['localhost:9200'];
-            $connParams['logPath'] = storage_path() . '/logs/elasticsearch-' . php_sapi_name() . '.log';
-
-            // merge settings from app/config/elasticsearch.php
-            $params = array_merge($connParams, $this->app['config']->get('elasticsearch', []));
-
-            $logger = ClientBuilder::defaultLogger($params['logPath']);
-
-            return ClientBuilder::create()->setHosts($params['hosts'])->setLogger($logger)->build();
+            return ClientBuilder::crecdate()->setHosts($config['hosts'])->setLogger($logger)->build();
 
         });
 
