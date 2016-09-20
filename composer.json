@@ -1,28 +1,20 @@
 {
-    "name": "shift31/laravel-elasticsearch",
-    "description": "A Laravel Service Provider for the Elasticsearch API client",
-    "authors": [
-        {
-            "name": "Shift 31 Consulting",
-            "email": "code@shift31.com"
-        }
-    ],
-    "require": {
-        "php": ">=5.4.0",
-        "illuminate/support": "~4|~5",
-        "elasticsearch/elasticsearch": "~2.0"
-    },
-    "autoload": {
-        "classmap": [
-            "src/migrations"
-        ],
-        "psr-0": {
-            "Shift31\\LaravelElasticsearch": "src/"
-        }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "require-dev": {
-        "laravel/framework": "^5.2"
+  "name": "shift31/laravel-elasticsearch",
+  "description": "A Laravel Service Provider for the Elasticsearch API client",
+  "authors": [
+    {
+      "name": "Shift 31 Consulting",
+      "email": "code@shift31.com"
     }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "laravel/framework": "~4|~5",
+    "elasticsearch/elasticsearch": "~2.0"
+  },
+  "autoload": {
+    "psr-0": {
+      "Shift31\\LaravelElasticsearch": "src/"
+    }
+  }
 }
