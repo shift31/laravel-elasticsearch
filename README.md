@@ -22,7 +22,18 @@ Usage
 -----
 1. Run `composer require shift31/laravel-elasticsearch:~2.0`
 
-2. Create app/config/elasticsearch.php, modifying the following contents accordingly:
+2. Publish config file
+
+Laravel 4x
+```
+$ php artisan config:publish shift31/laravel-elasticsearch 
+```
+Laravel 5x
+```
+$ php artisan vendor:publish --provider="Shift31\LaravelElasticsearch\ElasticsearchServiceProvider" --tag=config
+```
+
+Manually: Create app/config/elasticsearch.php, modifying the following contents accordingly:
 ```php
 <?php
 
@@ -33,8 +44,7 @@ return array(
     'logPath' => 'path/to/your/elasticsearch/log',
 );
 ```
-
-The keys of this array should be named according the parameters supported by Elasticsearch\Client.
+Note: The keys of this array should be named according the parameters supported by Elasticsearch\Client.
 
 3. In the `'providers'` array in app/config/app.php, if you are using Laravel 4.x, add `'Shift31\LaravelElasticsearch\LaravelElasticsearchServiceProvider'`. 
  
