@@ -32,8 +32,7 @@ class ElasticsearchServiceProvider extends ServiceProvider
             $config = $this->app->config->get('elasticsearch');
             $logger = ClientBuilder::defaultLogger($config['logPath']);
 
-            return ClientBuilder::crecdate()->setHosts($config['hosts'])->setLogger($logger)->build();
-
+            return ClientBuilder::create()->setHosts($config['hosts'])->setLogger($logger)->build();
         });
 
         $this->app->alias('Elasticsearch\Client', 'elasticsearch');

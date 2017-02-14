@@ -2,8 +2,14 @@
 
 use Illuminate\Support\Facades\Facade;
 
+/**
+ * @see \Elasticsearch\ClientBuilder
+ */
+class Es extends Facade
+{
 
-class Es extends Facade {
-
-    protected static function getFacadeAccessor() { return 'elasticsearch'; }
+    protected static function getFacadeAccessor()
+    {
+        return 'elasticsearch';
+    }
 }
