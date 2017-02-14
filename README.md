@@ -68,3 +68,7 @@ If you return an empty array in the config file:
 `'hosts'` defaults to localhost:9200
 
 `'logPath'` defaults to `storage_path() . '/logs/elasticsearch.log'`
+
+Contributing
+---------------------
+Please see [CONTRIBUTING.md](CONTRIBUTING.md).
