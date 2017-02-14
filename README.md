@@ -1,5 +1,11 @@
 Elasticsearch for Laravel
 =========================
+[![Latest Stable Version](https://poser.pugx.org/shift31/laravel-elasticsearch/v/stable)](https://packagist.org/packages/shift31/laravel-elasticsearch)
+[![Total Downloads](https://poser.pugx.org/shift31/laravel-elasticsearch/downloads)](https://packagist.org/packages/shift31/laravel-elasticsearch)
+[![Build Status](https://travis-ci.org/shift31/laravel-elasticsearch.svg?branch=master)](https://travis-ci.org/shift31/laravel-elasticsearch)
+[![Coverage Status](https://coveralls.io/repos/github/shift31/laravel-elasticsearch/badge.svg?branch=master)](https://coveralls.io/github/shift31/laravel-elasticsearch?branch=master)
+[![License](https://poser.pugx.org/shift31/laravel-elasticsearch/license)](https://packagist.org/packages/shift31/laravel-elasticsearch)
+
 This is a Laravel (4+) Service Provider for the official Elasticsearch low-level client:
 http://www.elasticsearch.org/guide/en/elasticsearch/client/php-api/current/index.html
 
