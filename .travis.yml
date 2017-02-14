@@ -1,12 +1,18 @@
 language: php
 
-php: 
-  - 5.3
+php:
   - 5.4
   - 5.5
+  - 5.6
 
 before_script:
-  - curl -s http://getcomposer.org/installer | php
-  - php composer.phar install --dev
+  - travis_retry composer self-update
+  - travis_retry composer update --prefer-dist --no-interaction
 
-script: phpunit
+script:
+  - mkdir -p build/logs
+  - protected/vendor/bin/phpcs
+  - protected/vendor/bin/phpunit
+
+after_script:
+  - protected/vendor/bin/coveralls -v

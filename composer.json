@@ -12,9 +12,24 @@
     "laravel/framework": "~4|~5",
     "elasticsearch/elasticsearch": "~2.0"
   },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^2.8",
+    "phpunit/phpunit": "^5.7"
+  },
   "autoload": {
     "psr-0": {
       "Shift31\\LaravelElasticsearch": "src/"
     }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "2.0.x-dev"
+    }
+  },
+  "scripts": {
+    "test": [
+      "vendor/bin/phpcs",
+      "vendor/bin/phpunit"
+    ]
   }
 }
