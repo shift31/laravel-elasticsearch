@@ -10,8 +10,8 @@ This is a Laravel (4+) Service Provider for the official Elasticsearch low-level
 http://www.elasticsearch.org/guide/en/elasticsearch/client/php-api/current/index.html
 
 
-Version Matrix
---------------
+Old Version Matrix
+------------------
 Since there are breaking changes in Elasticsearch 1.0, your version of Elasticsearch must match the version of this library, which matches the version of the Elasticsearch low-level client.
 If you are using a version older than 1.0, you must install the `0.4` laravel-elasticsearch branch.  Otherwise, use the `1.0` branch.
 
@@ -21,6 +21,20 @@ The master branch will always track the latest version.
 | --------------------- | ---------------------------- |
 | >= 1.0                | 1.0, 2.0                     |
 | <= 0.90.*             | 0.4                          |
+
+New Version Matrix (under development!)
+------------------
+| Elasticsearch Version | Laravel | laravel-elasticsearch branch |
+| --------------------- |---------| ---------------------------- |
+|  5.0                  | 4.2     | 4.5                          |
+|  2.0                  | 4.2     | 4.2                          |
+|  1.0                  | 4.2     | 4.1                          |
+| <= 0.90.*             | 4.2     | 4.0                          |
+|  5.0                  | 5.x     | 5.5                          |
+|  2.0                  | 5.2     | 5.2                          |
+|  1.0                  | 5.2     | 5.1                          |
+| <= 0.90.*             | 5.2     | 5.0                          |
+
 
 **Support for v1.1.x of the Elasticsearch client has been added in v1.1 of laravel-elasticsearch.**  We'll try to be consistent with this convention going forward.
 
