@@ -1,5 +1,5 @@
-Elasticsearch for Laravel
-=========================
+Laravel Elasticsearch Service Provider  (v4.0.x)
+================================================
 [![Latest Stable Version](https://poser.pugx.org/shift31/laravel-elasticsearch/v/stable)](https://packagist.org/packages/shift31/laravel-elasticsearch)
 [![Total Downloads](https://poser.pugx.org/shift31/laravel-elasticsearch/downloads)](https://packagist.org/packages/shift31/laravel-elasticsearch)
 [![Build Status](https://travis-ci.org/shift31/laravel-elasticsearch.svg?branch=master)](https://travis-ci.org/shift31/laravel-elasticsearch)
