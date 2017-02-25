@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Elasticsearch\ClientBuilder
+ * @see \Elasticsearch\Client
  */
 class Es extends Facade
 {

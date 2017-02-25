@@ -1,43 +1,31 @@
-<?php namespace Shift31\LaravelElasticsearch;
+<?php
+namespace Shift31\LaravelElasticsearch;
 
-use Elasticsearch\ClientBuilder;
+use Elasticsearch\Client;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 
-/**
- * Class ElasticsearchServiceProvider
- *
- * ServiceProvider compatible with Laravel 5
- *
- * @package Shift31\LaravelElasticsearch
- */
 class ElasticsearchServiceProvider extends ServiceProvider
 {
     /**
-     * Register the service provider.
-     *
-     * @return void
+     * @inheritdoc
+     */
+    public function boot()
+    {
+        $this->package('shift31/laravel-elasticsearch');
+    }
+
+    /**
+     * @inheritdoc
      */
     public function register()
     {
-        // publish config file
-        $this->publishes([
-            __DIR__ . '/../../config/elasticsearch.php' => config_path('elasticsearch.php')
-        ], 'config');
+        $this->app->singleton('elasticsearch', function () {
+            $customConfig = $this->app->config->get('elasticsearch');
+            $defaultConfig = $this->loadDefaultConfig();
 
-        // merge default config variables
-        $this->mergeConfigFrom(__DIR__ . '/../../config/elasticsearch.php', 'elasticsearch');
-
-        $this->app->singleton('Elasticsearch\Client', function () {
-            $config = $this->app->config->get('elasticsearch');
-            $logger = ClientBuilder::defaultLogger($config['logPath']);
-
-            return ClientBuilder::create()->setHosts($config['hosts'])->setLogger($logger)->build();
+            return new Client(array_merge($defaultConfig, $customConfig));
         });
-
-        $this->app->alias('Elasticsearch\Client', 'elasticsearch');
-
-        // Shortcut so developers don't need to add an Alias in app/config/app.php
         $this->app->booting(function () {
             $loader = AliasLoader::getInstance();
             $loader->alias('Es', 'Shift31\LaravelElasticsearch\Facades\Es');
@@ -45,12 +33,15 @@ class ElasticsearchServiceProvider extends ServiceProvider
     }
 
     /**
-     * Get the services provided by the provider.
-     *
-     * @return array
+     * @inheritdoc
      */
     public function provides()
     {
-        return ['elasticsearch', 'Elasticsearch\Client'];
+        return ['elasticsearch'];
+    }
+
+    private function loadDefaultConfig()
+    {
+        return $this->app->files->getRequire(realpath(__DIR__ . '/../../config/elasticsearch.php'));
     }
 }
