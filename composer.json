@@ -10,14 +10,15 @@
   "require": {
     "php": ">=5.4.0 <=7.0.0",
     "laravel/framework": "~4.2.0",
-    "elasticsearch/elasticsearch": "~1.0"
+    "elasticsearch/elasticsearch": "~2.0"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^2.8",
     "phpunit/phpunit": "^4.8",
     "mockery/mockery": "^0.9.8",
     "satooshi/php-coveralls": "^1.0",
-    "orchestra/testbench": "^2.2"
+    "orchestra/testbench": "^2.2",
+    "monolog/monolog": "~1.0"
   },
   "autoload": {
     "psr-0": {

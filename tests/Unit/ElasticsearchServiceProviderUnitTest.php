@@ -42,7 +42,9 @@ class ElasticsearchServiceProviderUnitTest extends TestCase
     {
         $configPath = $this->getSourcePath('config/elasticsearch.php');
         $configMock = Mockery::mock('Illuminate\Config\Repository', function (MockInterface $m) {
-            $m->shouldReceive('get')->with('shift31::elasticsearch')->andReturn([]);
+            $m->shouldReceive('get')->with('shift31::elasticsearch')->andReturn([
+                'hosts' => [],
+            ]);
         });
         $filesMock = Mockery::mock('Illuminate\Filesystem\Filesystem', function (MockInterface $m) use ($configPath) {
             $m->shouldReceive('getRequire')
