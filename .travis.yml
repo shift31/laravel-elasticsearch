@@ -9,7 +9,7 @@ services:
   - elasticsearch
 
 before_install:
-  - curl -O https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.3.deb && sudo dpkg -i --force-confnew elasticsearch-1.7.3.deb && sudo service elasticsearch restart
+  - curl -O https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.6.deb && sudo dpkg -i --force-confnew elasticsearch-1.7.6.deb && sudo service elasticsearch restart
 
 before_script:
   - travis_retry composer self-update
