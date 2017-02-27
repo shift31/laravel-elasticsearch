@@ -12,7 +12,7 @@ class ElasticsearchServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->package('shift31/laravel-elasticsearch');
+        $this->package('shift31/laravel-elasticsearch', 'shift31');
     }
 
     /**
@@ -21,7 +21,7 @@ class ElasticsearchServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('elasticsearch', function () {
-            $customConfig = $this->app->config->get('elasticsearch');
+            $customConfig = $this->app->config->get('shift31::elasticsearch');
             $defaultConfig = $this->loadDefaultConfig();
 
             return new Client(array_merge($defaultConfig, $customConfig));

@@ -50,20 +50,11 @@ Laravel artisan command
 ```
 $ php artisan config:publish shift31/laravel-elasticsearch 
 ```
-
-Manually: Create [app/config/elasticsearch.php](src/config/elasticsearch.php), modifying the following contents 
-accordingly:
+You can always read config parameters with:
 ```php
-<?php
-
-return array(
-    'hosts' => array(
-                    'your.elasticsearch.server:9200'
-                    ),
-    'logPath' => 'path/to/your/elasticsearch/log',
-);
+\Config::get('shift31::elasticsearch');
 ```
-Note: The keys of this array should be named according the parameters supported by Elasticsearch\Client.
+Note: The keys of this array should be named according the parameters supported by [Elasticsearch\Client](https://github.com/elastic/elasticsearch-php/blob/0.4/src/Elasticsearch/Client.php).
 
 3. In the `'providers'` array in app/config/app.php, add `'Shift31\LaravelElasticsearch\ElasticsearchServiceProvider'`. 
 
@@ -77,11 +68,7 @@ $result = Es::search($searchParams);
 
 Default Configuration
 ---------------------
-If you return an empty array in the config file:
-
-`'hosts'` defaults to localhost:9200
-
-`'logPath'` defaults to `storage_path() . '/logs/elasticsearch.log'`
+If you return an empty array in the config file, Service provider [merges default config with custom config variables](https://github.com/shift31/laravel-elasticsearch/blob/master/src/Shift31/LaravelElasticsearch/ElasticsearchServiceProvider.php#L27).
 
 [Default config file](src/config/elasticsearch.php) which is publishing by artisan command.
 
