@@ -53,6 +53,14 @@ $searchParams['size'] = 50;
 $searchParams['body']['query']['query_string']['query'] = 'foofield:barstring';
 $result = Es::search($searchParams);
 ```
+**If you are using Laravel 5** use either (notice the backslash):
+```php
+$result = \Es::search($searchParams);
+```
+or apply the following use statement:
+```php
+use Shift31\LaravelElasticsearch\Facades\Es
+```
 
 Default Configuration
 ---------------------
