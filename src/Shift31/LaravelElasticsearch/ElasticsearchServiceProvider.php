@@ -24,15 +24,10 @@ class ElasticsearchServiceProvider extends ServiceProvider
     {
         $this->app->singleton('elasticsearch', function () {
             $config = array_merge($this->loadDefaultConfig(), $this->app->config->get('shift31::elasticsearch'));
-            $builder = new ClientBuilder();
-            $builder->setHosts($config['hosts']);
-            $builder->setRetries($config['retries']);
-            if (is_null($config['logPath']) == false) {
-                $builder->setLogger(ClientBuilder::defaultLogger($config['logPath'], $config['logLevel']));
-            }
 
-            return $builder->build();
+            return ClientBuilder::fromConfig($config);
         });
+
         $this->app->booting(function () {
             $loader = AliasLoader::getInstance();
             $loader->alias('Es', 'Shift31\LaravelElasticsearch\Facades\Es');

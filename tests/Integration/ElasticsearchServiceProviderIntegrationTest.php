@@ -1,6 +1,7 @@
 <?php
 namespace Shift31\LaravelElasticsearch\Tests\Integration;
 
+use Elasticsearch\ClientBuilder;
 use Orchestra\Testbench\TestCase;
 use Illuminate\Support\Facades\Config;
 use Shift31\LaravelElasticsearch\Facades\Es;
@@ -17,8 +18,9 @@ class ElasticsearchServiceProviderIntegrationTest extends TestCase
 
     public function test_to_see_elasticsearch_log_file()
     {
-        $logPath = Config::get('shift31::elasticsearch.logPath');
-        Config::set('shift31::elasticsearch.logLevel', 100);
+        $logPath = storage_path('logs/elastic-search.log');
+        $logger = ClientBuilder::defaultLogger($logPath, 100);
+        Config::set('shift31::elasticsearch.logger', $logger);
         $indexParams['index'] = 'shift31';
         $result = Es::indices()->delete($indexParams);
         $this->assertArrayHasKey('acknowledged', $result);
@@ -30,8 +32,8 @@ class ElasticsearchServiceProviderIntegrationTest extends TestCase
     {
         $config = Config::get('shift31::elasticsearch');
         $this->assertArrayHasKey('hosts', $config);
-        $this->assertArrayHasKey('logPath', $config);
-        $this->assertArrayHasKey('logLevel', $config);
+        $this->assertArrayHasKey('logger', $config);
+        $this->assertArrayHasKey('retries', $config);
     }
 
     protected function getPackageProviders()

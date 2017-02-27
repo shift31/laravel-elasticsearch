@@ -57,7 +57,7 @@ $result = Es::search($searchParams);
 Default Configuration
 ---------------------
 If you return an empty array in the config file, Service provider [merges default config with custom config variables](https://github.com/shift31/laravel-elasticsearch/blob/master/src/Shift31/LaravelElasticsearch/ElasticsearchServiceProvider.php#L27).
-If you want to disable elastic search logging, Just set in custom config file ['logPath' => null](https://github.com/shift31/laravel-elasticsearch/blob/master/src/config/elasticsearch.php#L5) then logging will be disabled.
+For custom config file question please see [this](https://www.elastic.co/guide/en/elasticsearch/client/php-api/2.0/_configuration.html#_building_the_client_from_a_configuration_hash) elastic search configuration page.
 
 [Default config file](src/config/elasticsearch.php) which is publishing by artisan command.
 
