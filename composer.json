@@ -10,7 +10,7 @@
   "require": {
     "php": ">=5.4.0 <=7.0.0",
     "laravel/framework": "~4.2.0",
-    "elasticsearch/elasticsearch": "~0.4"
+    "elasticsearch/elasticsearch": "~1.0"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^2.8",
