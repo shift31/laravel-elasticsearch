@@ -24,7 +24,7 @@ class ElasticsearchServiceProviderUnitTest extends TestCase
         });
         $configMock = Mockery::mock('Illuminate\Config\Repository', function (MockInterface $m) use ($configPath) {
             $m->shouldReceive('package')
-                ->with('shift31/laravel-elasticsearch', $configPath, 'laravel-elasticsearch')
+                ->with('shift31/laravel-elasticsearch', $configPath, 'shift31')
                 ->once()
                 ->andReturnSelf();
         });
@@ -42,24 +42,25 @@ class ElasticsearchServiceProviderUnitTest extends TestCase
     {
         $configPath = $this->getSourcePath('config/elasticsearch.php');
         $configMock = Mockery::mock('Illuminate\Config\Repository', function (MockInterface $m) {
-            $m->shouldReceive('get')->with('elasticsearch')->andReturn([]);
+            $m->shouldReceive('get')->with('shift31::elasticsearch')->andReturn([]);
         });
         $filesMock = Mockery::mock('Illuminate\Filesystem\Filesystem', function (MockInterface $m) use ($configPath) {
             $m->shouldReceive('getRequire')
                 ->with($configPath)
                 ->once()->andReturn([]);
         });
-        $application = Mockery::mock('Illuminate\Foundation\Application', function (MockInterface $m) use ($configMock, $filesMock) {
-            $m->shouldReceive('booting')->once()->andReturnSelf();
-            $m->shouldReceive('offsetGet')->with('config')->andReturn($configMock);
-            $m->shouldReceive('offsetGet')->with('files')->andReturn($filesMock);
-            $m->shouldReceive('singleton')->with('elasticsearch',
-                Mockery::on(function ($closure) {
-                    $this->assertInstanceOf('Elasticsearch\Client', $closure());
+        $application = Mockery::mock('Illuminate\Foundation\Application',
+            function (MockInterface $m) use ($configMock, $filesMock) {
+                $m->shouldReceive('booting')->once()->andReturnSelf();
+                $m->shouldReceive('offsetGet')->with('config')->andReturn($configMock);
+                $m->shouldReceive('offsetGet')->with('files')->andReturn($filesMock);
+                $m->shouldReceive('singleton')->with('elasticsearch',
+                    Mockery::on(function ($closure) {
+                        $this->assertInstanceOf('Elasticsearch\Client', $closure());
 
-                    return true;
-                }))->once()->andReturnSelf();
-        });
+                        return true;
+                    }))->once()->andReturnSelf();
+            });
         $provider = new ElasticsearchServiceProvider($application);
         $this->assertNull($provider->register());
     }
