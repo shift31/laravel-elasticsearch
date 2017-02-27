@@ -15,6 +15,17 @@ class ElasticsearchServiceProviderIntegrationTest extends TestCase
         $this->assertTrue($result['acknowledged']);
     }
 
+    public function test_to_see_elasticsearch_log_file()
+    {
+        $logPath = Config::get('shift31::elasticsearch.logPath');
+        Config::set('shift31::elasticsearch.logLevel', 100);
+        $indexParams['index'] = 'shift31';
+        $result = Es::indices()->delete($indexParams);
+        $this->assertArrayHasKey('acknowledged', $result);
+        $this->assertTrue($result['acknowledged']);
+        $this->assertTrue(file_exists($logPath));
+    }
+
     public function test_get_elasticsearch_config()
     {
         $config = Config::get('shift31::elasticsearch');

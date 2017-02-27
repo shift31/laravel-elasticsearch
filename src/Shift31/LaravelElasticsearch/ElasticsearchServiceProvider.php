@@ -1,13 +1,13 @@
 <?php
 namespace Shift31\LaravelElasticsearch;
 
-use Elasticsearch\Client;
+use Elasticsearch\ClientBuilder;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 
 class ElasticsearchServiceProvider extends ServiceProvider
 {
-    const VERSION = '4.1.0';
+    const VERSION = '4.2.0';
 
     /**
      * @inheritdoc
@@ -23,10 +23,15 @@ class ElasticsearchServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('elasticsearch', function () {
-            $customConfig = $this->app->config->get('shift31::elasticsearch');
-            $defaultConfig = $this->loadDefaultConfig();
+            $config = array_merge($this->loadDefaultConfig(), $this->app->config->get('shift31::elasticsearch'));
+            $builder = new ClientBuilder();
+            $builder->setHosts($config['hosts']);
+            $builder->setRetries($config['retries']);
+            if (is_null($config['logPath']) == false) {
+                $builder->setLogger(ClientBuilder::defaultLogger($config['logPath'], $config['logLevel']));
+            }
 
-            return new Client(array_merge($defaultConfig, $customConfig));
+            return $builder->build();
         });
         $this->app->booting(function () {
             $loader = AliasLoader::getInstance();

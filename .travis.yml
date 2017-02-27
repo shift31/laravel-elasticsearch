@@ -8,7 +8,7 @@ php:
 addons:
   apt:
     sources:
-      - elasticsearch-1.7
+      - elasticsearch-2.4
     packages:
       - elasticsearch
 
