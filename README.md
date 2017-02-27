@@ -1,9 +1,9 @@
-Laravel Elasticsearch Service Provider  (4.0.0)
+Laravel Elasticsearch Service Provider  (4.1.0)
 ================================================
 [![Latest Stable Version](https://poser.pugx.org/shift31/laravel-elasticsearch/v/stable)](https://packagist.org/packages/shift31/laravel-elasticsearch)
 [![Total Downloads](https://poser.pugx.org/shift31/laravel-elasticsearch/downloads)](https://packagist.org/packages/shift31/laravel-elasticsearch)
-[![Build Status](https://travis-ci.org/shift31/laravel-elasticsearch.svg?branch=4.0)](https://travis-ci.org/shift31/laravel-elasticsearch)
-[![Coverage Status](https://coveralls.io/repos/github/shift31/laravel-elasticsearch/badge.svg?branch=4.0)](https://coveralls.io/github/shift31/laravel-elasticsearch?branch=master)
+[![Build Status](https://travis-ci.org/shift31/laravel-elasticsearch.svg?branch=4.1)](https://travis-ci.org/shift31/laravel-elasticsearch)
+[![Coverage Status](https://coveralls.io/repos/github/shift31/laravel-elasticsearch/badge.svg?branch=4.1)](https://coveralls.io/github/shift31/laravel-elasticsearch?branch=master)
 [![License](https://poser.pugx.org/shift31/laravel-elasticsearch/license)](https://packagist.org/packages/shift31/laravel-elasticsearch)
 
 This is a Laravel (4.2) Service Provider for the [official Elasticsearch low-level client](http://www.elasticsearch.org/guide/en/elasticsearch/client/php-api/current/index.html):
@@ -30,7 +30,7 @@ Attention: Until we launch new versions please keep using old stable versions (w
 
 Usage
 -----
-1. Run `composer require shift31/laravel-elasticsearch:~4.0.0`
+1. Run `composer require shift31/laravel-elasticsearch:~4.1.0`
 
 2. Publish config file
 

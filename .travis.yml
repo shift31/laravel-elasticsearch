@@ -5,11 +5,15 @@ php:
   - 5.5
   - 5.6
 
+addons:
+  apt:
+    sources:
+      - elasticsearch-1.7
+    packages:
+      - elasticsearch
+
 services:
   - elasticsearch
-
-before_install:
-  - curl -O https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-0.90.13.deb && sudo dpkg -i --force-confnew elasticsearch-0.90.13.deb && sudo service elasticsearch restart
 
 before_script:
   - travis_retry composer self-update
