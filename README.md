@@ -1,4 +1,4 @@
-Laravel Elasticsearch Service Provider  (4.1.0)
+Laravel Elasticsearch Service Provider  (4.1.1)
 ================================================
 [![Latest Stable Version](https://poser.pugx.org/shift31/laravel-elasticsearch/v/stable)](https://packagist.org/packages/shift31/laravel-elasticsearch)
 [![Total Downloads](https://poser.pugx.org/shift31/laravel-elasticsearch/downloads)](https://packagist.org/packages/shift31/laravel-elasticsearch)
@@ -6,7 +6,7 @@ Laravel Elasticsearch Service Provider  (4.1.0)
 [![Coverage Status](https://coveralls.io/repos/github/shift31/laravel-elasticsearch/badge.svg?branch=4.1)](https://coveralls.io/github/shift31/laravel-elasticsearch?branch=master)
 [![License](https://poser.pugx.org/shift31/laravel-elasticsearch/license)](https://packagist.org/packages/shift31/laravel-elasticsearch)
 
-This is a Laravel (4.2) Service Provider for the [official Elasticsearch low-level client](http://www.elasticsearch.org/guide/en/elasticsearch/client/php-api/current/index.html):
+This is a Laravel (4.2) Service Provider for the [official Elasticsearch low-level client](https://www.elastic.co/guide/en/elasticsearch/client/php-api/1.0/index.html).
 
 Version Matrix
 ------------------
@@ -42,7 +42,7 @@ You can always read config parameters with:
 ```php
 \Config::get('shift31::elasticsearch');
 ```
-Note: The keys of this array should be named according the parameters supported by [Elasticsearch\Client](https://github.com/elastic/elasticsearch-php/blob/0.4/src/Elasticsearch/Client.php).
+Note: The keys of this array should be named according the parameters supported by [Elasticsearch\Client](https://github.com/elastic/elasticsearch-php/blob/1.0/src/Elasticsearch/Client.php#L86).
 
 3. In the `'providers'` array in app/config/app.php, add `'Shift31\LaravelElasticsearch\ElasticsearchServiceProvider'`. 
 
@@ -56,7 +56,7 @@ $result = Es::search($searchParams);
 
 Default Configuration
 ---------------------
-If you return an empty array in the config file, Service provider [merges default config with custom config variables](https://github.com/shift31/laravel-elasticsearch/blob/master/src/Shift31/LaravelElasticsearch/ElasticsearchServiceProvider.php#L27).
+If you return an empty array in the config file, Service provider [merges default config with custom config variables](src/Shift31/LaravelElasticsearch/ElasticsearchServiceProvider.php#L29).
 
 [Default config file](src/config/elasticsearch.php) which is publishing by artisan command.
 

@@ -8,7 +8,7 @@
     }
   ],
   "require": {
-    "php": ">=5.4.0 <=7.0.0",
+    "php": ">=5.4.0 <=7.0",
     "laravel/framework": "~4.2.0",
     "elasticsearch/elasticsearch": "~1.0"
   },
