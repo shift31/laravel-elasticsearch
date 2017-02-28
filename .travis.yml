@@ -11,8 +11,8 @@ before_script:
 
 script:
   - mkdir -p build/logs
-  - protected/vendor/bin/phpcs
-  - protected/vendor/bin/phpunit
+  - vendor/bin/phpcs
+  - vendor/bin/phpunit
 
 after_script:
-  - protected/vendor/bin/coveralls -v
+  - vendor/bin/coveralls -v
