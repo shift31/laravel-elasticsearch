@@ -18,9 +18,9 @@
         </testsuite>
     </testsuites>
     <filter>
-        <blacklist>
-            <directory>./vendor/*</directory>
-        </blacklist>
+        <whitelist>
+            <directory suffix=".php">./src/Shift31/LaravelElasticsearch/</directory>
+        </whitelist>
     </filter>
     <logging>
         <log type="coverage-clover" target="build/logs/clover.xml"/>

@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 
 class ElasticsearchServiceProvider extends ServiceProvider
 {
-    const VERSION = '4.2.0';
+    const VERSION = '4.2.1';
 
     /**
      * @inheritdoc
