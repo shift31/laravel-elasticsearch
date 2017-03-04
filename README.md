@@ -1,4 +1,4 @@
-Laravel Elasticsearch Service Provider  (4.5.0)
+Laravel Elasticsearch Service Provider  (4.5.1)
 ================================================
 [![Latest Stable Version](https://poser.pugx.org/shift31/laravel-elasticsearch/v/stable)](https://packagist.org/packages/shift31/laravel-elasticsearch)
 [![Total Downloads](https://poser.pugx.org/shift31/laravel-elasticsearch/downloads)](https://packagist.org/packages/shift31/laravel-elasticsearch)
