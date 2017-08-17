@@ -2,28 +2,16 @@
 
 namespace Shift31\LaravelElasticsearch\Tests\Integration;
 
-use Elasticsearch\Client;
 use Elasticsearch\ClientBuilder;
-use Elasticsearch\Namespaces\IndicesNamespace;
 use Orchestra\Testbench\TestCase;
 use Illuminate\Support\Facades\Config;
 use Shift31\LaravelElasticsearch\Facades\Es;
 
 class ElasticsearchServiceProviderIntegrationTest extends TestCase
 {
-    public function test_load_original()
-    {
-        $this->assertFalse(Es::ping());
-    }
-
     public function test_elasticsearch_simple_create_request()
     {
         $indexParams['index'] = 'shift31';
-        $mocked_client = $this->createMock(Client::class);
-        $indices_namespace = $this->createMock(IndicesNamespace::class);
-        $indices_namespace->method('create')->willReturn(['acknowledged' => true]);
-        $mocked_client->method('indices')->willReturn($indices_namespace);
-        Es::swap($mocked_client);
         $result = Es::indices()->create($indexParams);
         $this->assertArrayHasKey('acknowledged', $result);
         $this->assertTrue($result['acknowledged']);
@@ -35,11 +23,6 @@ class ElasticsearchServiceProviderIntegrationTest extends TestCase
         $logger = ClientBuilder::defaultLogger($logPath, 100);
         Config::set('shift31::elasticsearch.logger', $logger);
         $indexParams['index'] = 'shift31';
-        $mocked_client = $this->createMock(Client::class);
-        $indices_namespace = $this->createMock(IndicesNamespace::class);
-        $indices_namespace->method('delete')->willReturn(['acknowledged' => true]);
-        $mocked_client->method('indices')->willReturn($indices_namespace);
-        Es::swap($mocked_client);
         $result = Es::indices()->delete($indexParams);
         $this->assertArrayHasKey('acknowledged', $result);
         $this->assertTrue($result['acknowledged']);
@@ -54,7 +37,7 @@ class ElasticsearchServiceProviderIntegrationTest extends TestCase
         $this->assertArrayHasKey('retries', $config);
     }
 
-    protected function getPackageProviders()
+    protected function getPackageProviders($app)
     {
         return ['Shift31\LaravelElasticsearch\ElasticsearchServiceProvider'];
     }
