@@ -10,17 +10,13 @@ class ElasticsearchServiceProvider extends ServiceProvider
 {
     const VERSION = '4.5.0';
 
-    /** @var string */
-    public $config_path;
-
     /**
      * @inheritdoc
      */
     public function boot()
     {
-        $this->config_path = __DIR__ . '/../../config/elasticsearch.php';
         $this->publishes([
-            $this->config_path => config_path('elasticsearch.php'),
+            __DIR__ . '/../../config/elasticsearch.php' => config_path('elasticsearch.php'),
             'elasticsearch',
         ]);
     }
@@ -30,7 +26,7 @@ class ElasticsearchServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom($this->config_path, 'elasticsearch');
+        $this->mergeConfigFrom(__DIR__ . '/../../config/elasticsearch.php', 'elasticsearch');
         $this->app->singleton('elasticsearch', function () {
             return ClientBuilder::fromConfig(config('elasticsearch'));
         });
