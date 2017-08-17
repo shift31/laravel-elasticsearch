@@ -21,7 +21,7 @@ class ElasticsearchServiceProviderIntegrationTest extends TestCase
     {
         $logPath = storage_path('logs/elastic-search.log');
         $logger = ClientBuilder::defaultLogger($logPath, 100);
-        Config::set('shift31::elasticsearch.logger', $logger);
+        Config::set('elasticsearch.logger', $logger);
         $indexParams['index'] = 'shift31';
         $result = Es::indices()->delete($indexParams);
         $this->assertArrayHasKey('acknowledged', $result);
