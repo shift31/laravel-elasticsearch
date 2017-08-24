@@ -1,4 +1,5 @@
 <?php
+
 namespace Shift31\LaravelElasticsearch\Tests\Integration;
 
 use Elasticsearch\ClientBuilder;
@@ -20,7 +21,7 @@ class ElasticsearchServiceProviderIntegrationTest extends TestCase
     {
         $logPath = storage_path('logs/elastic-search.log');
         $logger = ClientBuilder::defaultLogger($logPath, 100);
-        Config::set('shift31::elasticsearch.logger', $logger);
+        Config::set('elasticsearch.logger', $logger);
         $indexParams['index'] = 'shift31';
         $result = Es::indices()->delete($indexParams);
         $this->assertArrayHasKey('acknowledged', $result);
@@ -30,13 +31,13 @@ class ElasticsearchServiceProviderIntegrationTest extends TestCase
 
     public function test_get_elasticsearch_config()
     {
-        $config = Config::get('shift31::elasticsearch');
+        $config = Config::get('elasticsearch');
         $this->assertArrayHasKey('hosts', $config);
         $this->assertArrayHasKey('logger', $config);
         $this->assertArrayHasKey('retries', $config);
     }
 
-    protected function getPackageProviders()
+    protected function getPackageProviders($app)
     {
         return ['Shift31\LaravelElasticsearch\ElasticsearchServiceProvider'];
     }
